@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import './screens/meals/meal_screen.dart';
+import './screens/mealDetails/details_screen.dart';
 import './screens/categories/category_screen.dart';
 
 void main() {
@@ -28,6 +30,12 @@ class MyApp extends StatelessWidget {
                 fontSize: 21,
                 color: Colors.white,
               ),
+              bodyText1: const TextStyle(
+                fontFamily: 'FiraCodeCondensed',
+                fontWeight: FontWeight.w900,
+                fontSize: 21,
+                color: Colors.black,
+              ),
             ),
       ),
       darkTheme: ThemeData(
@@ -45,10 +53,20 @@ class MyApp extends StatelessWidget {
                 fontSize: 21,
                 color: Colors.white,
               ),
+              bodyText1: const TextStyle(
+                fontFamily: 'FiraCodeCondensed',
+                fontWeight: FontWeight.w900,
+                fontSize: 21,
+                color: Colors.black,
+              ),
             ),
       ),
       themeMode: ThemeMode.light,
       home: const CategoryScreen(),
+      routes: {
+        MealScreen.routeName: (ctx) => const MealScreen(),
+        MealDetailsScreen.routeName: (ctx) => const MealDetailsScreen(),
+      },
     );
   }
 }
