@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 
 import '../../dummy_data.dart';
 
+import './steps_list.dart';
+import './ingredients_list.dart';
+
 class MealDetailsScreen extends StatelessWidget {
   static const routeName = '/meal-details';
   const MealDetailsScreen({Key? key}) : super(key: key);
@@ -10,37 +13,27 @@ class MealDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final mealId = ModalRoute.of(context)!.settings.arguments as String;
     final meal = dummyMeals.firstWhere((m) => m.id == mealId);
+    final useableHeight = MediaQuery.of(context).size.height -
+        kToolbarHeight -
+        MediaQuery.of(context).padding.top;
 
     return Scaffold(
       appBar: AppBar(
         title: Text(meal.title),
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           SizedBox(
-            height: 300,
+            height: useableHeight * 0.4,
             width: double.infinity,
             child: Image.network(
               meal.imageUrl,
               fit: BoxFit.cover,
             ),
           ),
-          Container(
-            margin: const EdgeInsets.symmetric(vertical: 10),
-            child: Text(
-              'Ingredients',
-              style: Theme.of(context).textTheme.bodyText1,
-            ),
-          ),
-          Container(
-            constraints: const BoxConstraints(minHeight: 100, maxHeight: 150),
-            child: GridView.count(
-              crossAxisCount: 2,
-              childAspectRatio: 6,
-              padding: const EdgeInsets.all(10),
-              children: meal.ingredients.map((data) => Text(data)).toList(),
-            ),
-          )
+          IngredientList(meal.ingredients, useableHeight * 0.2),
+          StepsList(meal.steps, useableHeight * 0.4),
         ],
       ),
     );

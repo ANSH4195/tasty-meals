@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSwatch(
           primarySwatch: Colors.deepOrange,
         ).copyWith(
-          secondary: Colors.deepOrangeAccent,
+          secondary: Colors.orangeAccent,
         ),
         canvasColor: Colors.orange[50],
         fontFamily: 'SourceSansPro',
@@ -36,6 +36,10 @@ class MyApp extends StatelessWidget {
                 fontSize: 21,
                 color: Colors.black,
               ),
+              bodyText2: const TextStyle(
+                fontSize: 16,
+                color: Colors.black,
+              ),
             ),
       ),
       darkTheme: ThemeData(
@@ -43,7 +47,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.deepOrange,
           brightness: Brightness.dark,
         ).copyWith(
-          secondary: Colors.deepOrangeAccent,
+          secondary: Colors.orangeAccent,
         ),
         fontFamily: 'SourceSansPro',
         textTheme: ThemeData.dark().textTheme.copyWith(
@@ -57,7 +61,11 @@ class MyApp extends StatelessWidget {
                 fontFamily: 'FiraCodeCondensed',
                 fontWeight: FontWeight.w900,
                 fontSize: 21,
-                color: Colors.black,
+                color: Colors.white,
+              ),
+              bodyText2: const TextStyle(
+                fontSize: 16,
+                color: Colors.white,
               ),
             ),
       ),
