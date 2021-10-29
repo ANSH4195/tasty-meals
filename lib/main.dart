@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import './screens/meals/meal_screen.dart';
-import './screens/mealDetails/details_screen.dart';
-import './screens/categories/category_screen.dart';
+import './widgets/meals/meal_screen.dart';
+import './widgets/bottomTabs/tabs_screen.dart';
+import './widgets/mealDetails/details_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.deepOrange,
         ).copyWith(
           secondary: Colors.orangeAccent,
+          secondaryVariant: Colors.yellowAccent,
         ),
         canvasColor: Colors.orange[50],
         fontFamily: 'SourceSansPro',
@@ -70,7 +71,7 @@ class MyApp extends StatelessWidget {
             ),
       ),
       themeMode: ThemeMode.light,
-      home: const CategoryScreen(),
+      home: const TabsScreen(),
       routes: {
         MealScreen.routeName: (ctx) => const MealScreen(),
         MealDetailsScreen.routeName: (ctx) => const MealDetailsScreen(),

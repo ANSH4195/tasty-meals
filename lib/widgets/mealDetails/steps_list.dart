@@ -28,14 +28,15 @@ class StepsList extends StatelessWidget {
         ),
         Container(
           height: useableHeight * 0.9,
-          margin: const EdgeInsets.symmetric(horizontal: 10),
+          margin: const EdgeInsets.symmetric(horizontal: 5),
           child: ListView.builder(
             itemBuilder: (ctx, idx) {
               return Card(
-                color: Theme.of(context).colorScheme.secondary,
-                child: Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: Text(
+                child: ListTile(
+                  leading: CircleAvatar(
+                    child: Text('${idx + 1}'),
+                  ),
+                  title: Text(
                     steps[idx],
                     style: Theme.of(context).textTheme.bodyText2,
                   ),

@@ -44,10 +44,15 @@ class IngredientList extends StatelessWidget {
         ),
         Container(
           constraints: BoxConstraints(maxHeight: useableHeight * 0.8),
-          margin: const EdgeInsets.symmetric(horizontal: 10),
+          margin: const EdgeInsets.symmetric(horizontal: 5),
           child: SingleChildScrollView(
-            child: Column(
-              children: children,
+            child: Card(
+              child: Padding(
+                padding: const EdgeInsets.all(5),
+                child: Column(
+                  children: children,
+                ),
+              ),
             ),
           ),
         ),
