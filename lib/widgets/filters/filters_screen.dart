@@ -4,20 +4,36 @@ import '../drawer/side_drawer.dart';
 
 class FiltersScreen extends StatefulWidget {
   static const routeName = '/filters';
-  const FiltersScreen({Key? key}) : super(key: key);
+  final void Function(Map<String, bool>) setFilters;
+  final Map<String, bool> currentFilters;
+  const FiltersScreen(this.currentFilters, this.setFilters, {Key? key})
+      : super(key: key);
 
   @override
   State<FiltersScreen> createState() => _FiltersScreenState();
 }
 
 class _FiltersScreenState extends State<FiltersScreen> {
-  bool _lactoseFree = false;
-  bool _glutenFree = false;
-  bool _vegetarian = false;
-  bool _vegan = false;
+  late bool _lactoseFree;
+  late bool _glutenFree;
+  late bool _vegetarian;
+  late bool _vegan;
+
+  @override
+  initState() {
+    _lactoseFree = widget.currentFilters['lactose'] as bool;
+    _glutenFree = widget.currentFilters['gluten'] as bool;
+    _vegetarian = widget.currentFilters['vegetarian'] as bool;
+    _vegan = widget.currentFilters['vegan'] as bool;
+    super.initState();
+  }
 
   Widget _buildListTile(
-      String title, String subtitle, bool value, void Function(bool) onChange) {
+    String title,
+    String subtitle,
+    bool value,
+    void Function(bool) onChange,
+  ) {
     return SwitchListTile(
       title: Text(title),
       subtitle: Text(subtitle),
@@ -80,6 +96,17 @@ class _FiltersScreenState extends State<FiltersScreen> {
             ),
           ),
         ],
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () => widget.setFilters({
+          'gluten': _glutenFree,
+          'vegan': _vegan,
+          'lactose': _lactoseFree,
+          'vegetarian': _vegetarian,
+        }),
+        icon: const Icon(Icons.fact_check),
+        label: const Text('Update!'),
+        backgroundColor: Colors.green,
       ),
     );
   }
